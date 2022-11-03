@@ -19,8 +19,8 @@
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
+      "front": "Differentiate betweeassdsfn Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updates are faster but do not directly update the HTMLhellobvvxc",
       "deckId": 1
     },
     {
@@ -41,6 +41,84 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "hey",
+      "back": "hey",
+      "deckId": 1,
+      "id": 8
+    },
+    {
+      "front": "as",
+      "back": "fdfd",
+      "deckId": 1,
+      "id": 9
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 10
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 11
+    },
+    {
+      "front": " vcx cv",
+      "back": "b xv ",
+      "deckId": 1,
+      "id": 12
+    },
+    {
+      "front": "b",
+      "back": " b",
+      "deckId": 2,
+      "id": 13
+    },
+    {
+      "front": "v",
+      "back": "cb",
+      "deckId": 2,
+      "id": 14
+    },
+    {
+      "front": " bxcc",
+      "back": " xbc v",
+      "deckId": 1,
+      "id": 15
+    },
+    {
+      "front": " mbaye",
+      "back": "baye",
+      "deckId": 1,
+      "id": 16
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 17
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 18
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 19
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 20
     }
   ]
 }

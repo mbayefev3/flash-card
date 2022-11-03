@@ -45,7 +45,7 @@ const DeckSreen = () => {
 
         })
 
-
+        // /decks/:deckId/cards/new
         // /decks/:deckId/edit
         return (
             <div className="card">
@@ -60,7 +60,11 @@ const DeckSreen = () => {
 
                     </Link>
                     <a href="#" className="btn btn-primary">Study</a>
-                    <a href="#" className="btn btn-primary">Add cards</a>
+                    <Link to={`/decks/${deckId}/cards/new`} >
+                        <button>
+                            Add cards
+                        </button>
+                    </Link>
                     <a href="#" className="btn btn-primary">Delete</a>
 
                 </div>

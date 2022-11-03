@@ -1,11 +1,13 @@
 import React from "react";
 import { deleteCard } from '../../../utils/api'
 
+import { Link, useParams } from "react-router-dom";
+
 const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
 
+    // /decks/:deckId/cards/:cardId/edit
 
-
-
+    const { deckId } = useParams()
     const cards = validCardsToStudy.map(({ front, back, id }) => {
 
 
@@ -28,7 +30,10 @@ const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
                     </div>
                 </div>
                 <div style={{ TextAlign: "center" }}>
-                    <button>Edit</button>
+                    <Link to={`/decks/${deckId}/cards/${id}/edit`}>
+                        <button>Edit</button>
+
+                    </Link>
                     <button onClick={() => handleDeleteCard(id)}>Delete</button>
                 </div>
             </div>
