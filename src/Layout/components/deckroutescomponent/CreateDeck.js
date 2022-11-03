@@ -1,9 +1,10 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createDeck } from '../../../utils/api'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, useParams } from 'react-router-dom'
 const CreateDeck = () => {
 
+    const { deckId } = useParams()
     const history = useHistory()
     const [formData, setFormData] = useState({
         name: '',
@@ -12,12 +13,18 @@ const CreateDeck = () => {
 
     const { name, description } = formData
 
+
+
+
     const handleChangeInput = ({ target: { name, value } }) => {
         setFormData({
             ...formData,
             [name]: value
         })
     }
+
+
+
 
     const handleFormSubmit = async (e) => {
         e.preventDefault()

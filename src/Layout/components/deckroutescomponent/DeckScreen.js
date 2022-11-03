@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react'
-import { readDeck } from '../../../utils/api'
+import { readDeck, deleteCard } from '../../../utils/api'
 import { useRouteMatch, useParams, Link } from 'react-router-dom'
+import DeckScreenCards from './DeckScreenCards'
 const DeckSreen = () => {
 
     const [Deck, setDeck] = useState({})
@@ -21,8 +22,31 @@ const DeckSreen = () => {
     }, [deckId])
 
 
+    //ths func will delete the card
+    const handleDeleteCard = async (id) => {
+        if (window.confirm("Delete this card?\n\nYou will not be able to recover it.")) {
+
+            await deleteCard(id)
+            const unRemovedCard = await readDeck(deckId)
+            setDeck({
+                ...Deck,
+                ...unRemovedCard
+            })
+        }
+
+    }
     if (Object.keys(Deck).length > 0) {
-        const { name, description } = Deck
+
+        const { name, description, cards } = Deck
+
+        //this will give me the right card format 
+        const validCardsToStudy = cards.filter(card => {
+            return Object.keys(card).length === 4 && card.front && card.back && (card.deckId || card.deckId === 0) && (card.id || card.id === 0)
+
+        })
+
+
+        // /decks/:deckId/edit
         return (
             <div className="card">
                 <div className="card-header">
@@ -31,7 +55,19 @@ const DeckSreen = () => {
                 </div>
                 <div className="card-body">
                     <p className="card-text">{description}</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <Link to={`/decks/${deckId}/edit`}>
+                        <button className="btn btn-primary">Edit</button>
+
+                    </Link>
+                    <a href="#" className="btn btn-primary">Study</a>
+                    <a href="#" className="btn btn-primary">Add cards</a>
+                    <a href="#" className="btn btn-primary">Delete</a>
+
+                </div>
+
+                <div>
+                    {validCardsToStudy.length === 0 ? <h2>No Cards at the moment</h2> : <DeckScreenCards validCardsToStudy={validCardsToStudy}
+                        handleDeleteCard={handleDeleteCard} />}
                 </div>
             </div>
         )
