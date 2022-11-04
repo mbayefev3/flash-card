@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { HomeButton } from '../homepagecomponent/DecksButton'
 const AddCardTitle = ({ deckName, profile }) => {
+
+    const { cardId, deckId } = useParams()
 
     return (
         <div>
@@ -12,9 +14,8 @@ const AddCardTitle = ({ deckName, profile }) => {
                 <Link to="/">
                     <HomeButton />
                 </Link>
-                <p style={{ color: 'blue' }}>{deckName}</p>
-                <p> {profile}</p>
-
+                <Link to={`/decks/${deckId}/cards/${cardId}/edit`}>   <p style={{ color: 'blue' }}>{deckName}</p></Link>
+                <p>{profile} {cardId}</p>
 
             </div>
             <div style={{ marginTop: '0.5rem' }}>

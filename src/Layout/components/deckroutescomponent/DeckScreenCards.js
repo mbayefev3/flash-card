@@ -14,31 +14,33 @@ const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
 
         return (
 
+            <div key={id}>
+                <div className="row" >
+                    <div className="col-sm-6">
+                        <div className="card">
+                            <div className="card-body">
+                                <p className="card-text">{front}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-6">
+                        <div className="card">
+                            <div className="card-body">
+                                <p className="card-text">{back}</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div className="row" key={id}>
-                <div className="col-sm-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <p className="card-text">{front}</p>
-                        </div>
-                    </div>
                 </div>
-                <div className="col-sm-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <p className="card-text">{back}</p>
-                        </div>
-                    </div>
-                </div>
-                <div style={{ TextAlign: "center" }}>
+
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Link to={`/decks/${deckId}/cards/${id}/edit`}>
                         <EditButton />
                     </Link>
                     < DeleteCardButton handleDeleteCard={handleDeleteCard} id={id} />
-
                 </div>
-            </div>
 
+            </div>
 
         )
     })

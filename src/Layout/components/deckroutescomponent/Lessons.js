@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import FlipButton from "./FlipButton";
 import { useHistory } from 'react-router-dom'
 import ByFlip from "./ByFlip"
-const Lessons = ({ cards }) => {
+const Lessons = ({ cards, Deck }) => {
     const [flip, setflip] = useState('front')
     const [next, setNext] = useState(0)
     const history = useHistory()
     // in the data there are cards that should not be included, this allow us to get the valid card format
-    const validCardsToStudy = cards.filter(card => {
-        return Object.keys(card).length === 4 && card.front && card.back && (card.deckId || card.deckId === 0) && (card.id || card.id === 0)
 
-    })
 
+
+    // cards.filter(card => {
+
+    //     return Object.keys(card).length === 4 && card.front && card.back && (card.deckId || card.deckId === 0) && (card.id || card.id === 0)
+
+    // })
     // console.log('valid', validCardsToStudy)
     const handleFilpCard = () => {
 
@@ -23,7 +26,7 @@ const Lessons = ({ cards }) => {
     }
 
     const handleNextClick = () => {
-        if (next < validCardsToStudy.length - 1) {
+        if (next < cards.length - 1) {
             setNext(next + 1)
         }
 
@@ -38,7 +41,7 @@ const Lessons = ({ cards }) => {
     }
 
     return (
-        <ByFlip handleFilpCard={handleFilpCard} handleNextClick={handleNextClick} next={next} flip={flip} validCardsToStudy={validCardsToStudy} />
+        <ByFlip handleFilpCard={handleFilpCard} handleNextClick={handleNextClick} next={next} flip={flip} cards={cards} />
     )
 }
 

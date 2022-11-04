@@ -2,12 +2,14 @@ import React from "react"
 
 import { useState, useEffect } from 'react'
 import { createDeck, readDeck, updateDeck } from '../../../utils/api'
-import { useHistory, Link, useParams } from 'react-router-dom'
+import { useHistory, Link, useParams, useRouteMatch } from 'react-router-dom'
+import { HomeButton } from "../homepagecomponent/DecksButton"
 
 const EditDeck = () => {
 
-
     const { deckId } = useParams()
+    const { url } = useRouteMatch()
+
     const history = useHistory()
     const [formData, setFormData] = useState({
         name: '',
@@ -79,14 +81,20 @@ const EditDeck = () => {
     return (
         <div>
 
-            {!checkForDeck && title ? <>
-                <div>
+            {!checkForDeck && title ? <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Link to="/">
-                        <button>Home</button>
-                        <button>{title}</button>
+                        <HomeButton />
+                    </Link>
+                    <Link to={url}>
+                        <p>{title}</p>
+
                     </Link>
                     <p>Edit Deck</p>
+
                 </div>
+
+                <h4>Edit Deck</h4>
                 <form onSubmit={handleFormSubmit}>
                     <div className="mb-3">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Name</label>
@@ -102,7 +110,7 @@ const EditDeck = () => {
 
 
                 </form>
-            </> : <h1>...Loading</h1>}
+            </div> : <h1>...Loading</h1>}
         </div>
     )
 }

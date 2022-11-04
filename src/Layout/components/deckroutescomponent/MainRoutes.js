@@ -5,6 +5,7 @@ import DeckScreen from "./DeckScreen";
 import EditDeck from "./EditDeck";
 import AddCard from "./AddCard";
 import CardRoutes from "./CardRoutes";
+import NotFound from "../../NotFound";
 const MainRoutes = () => {
     // /decks/:deckId/cards/new
     // /decks/:deckId/cards/:cardId/edit

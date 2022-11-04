@@ -9,7 +9,7 @@ import NotFound from "./NotFound";
 
 function Layout() {
   return (
-    <>
+    <main>
       <Header />
       <div className="container">
         <Switch>
@@ -26,7 +26,7 @@ function Layout() {
           <NotFound />
         </Switch>
       </div>
-    </>
+    </main>
   );
 }
 

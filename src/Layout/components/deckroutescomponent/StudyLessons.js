@@ -18,7 +18,7 @@ const StudyLessons = ({ Deck }) => {
             </div>
             <div className="card-body">
                 <h5 className="card-title">Study: {Deck.name}</h5>
-                <Lessons cards={Deck.cards} />
+                <Lessons cards={Deck.cards} Deck={Deck} />
             </div>
         </div>
     )

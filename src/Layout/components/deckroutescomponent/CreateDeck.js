@@ -3,6 +3,7 @@ import React from "react"
 import { useState, useEffect } from 'react'
 import { createDeck } from '../../../utils/api'
 import { useHistory, Link, useParams } from 'react-router-dom'
+import { HomeButton } from "../homepagecomponent/DecksButton"
 const CreateDeck = () => {
 
     const { deckId } = useParams()
@@ -30,7 +31,7 @@ const CreateDeck = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault()
 
-        if (name && description) {
+        if (name.trim() && description.trim()) {
 
             const { id } = await createDeck(formData)
             history.push(`/decks/${id}`)
@@ -43,12 +44,18 @@ const CreateDeck = () => {
 
     }
     return (
-        <>
-            <div>
+        <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
                 <Link to="/">
-                    <button>Home</button>
+                    <HomeButton />
                 </Link>
                 <p>Create Deck</p>
+
+
+            </div>
+            <div>
+                <h4>Create Deck</h4>
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
@@ -65,7 +72,7 @@ const CreateDeck = () => {
 
 
             </form>
-        </>
+        </div>
     )
 }
 

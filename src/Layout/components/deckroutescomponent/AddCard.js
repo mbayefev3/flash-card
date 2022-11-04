@@ -4,6 +4,7 @@ import { readDeck, createCard, readCard, updateCard } from '../../../utils/api'
 import AddCardTitle from './AddCardTitle'
 import { HomeButton } from '../homepagecomponent/DecksButton'
 import Loader from '../homepagecomponent/Loader'
+import AddCardForm from './AddCardForm'
 const AddCard = ({ profile, edit }) => {
 
     // console.log('props', profile)
@@ -25,7 +26,7 @@ const AddCard = ({ profile, edit }) => {
         }
 
         if (edit) {
-            // we only need the load card when we edit
+            // we only need the load card when we edit since edit card and add card share the same form component
             loadCard()
 
         }
@@ -68,10 +69,12 @@ const AddCard = ({ profile, edit }) => {
 
             if (!edit) {
                 if (formDataCards.front && formDataCards.back) {
-                    await createCard(deckId, formDataCards)
-                    setFormDataCards({ front: '', back: '' })
+                    if (formDataCards.front.trim() && formDataCards.back.trim()) {
+                        await createCard(deckId, formDataCards)
+                        setFormDataCards({ front: '', back: '' })
 
-                    history.push(`${url}`)
+                        history.push(`${url}`)
+                    }
                 }
             } else {
                 await updateCard({
@@ -89,26 +92,36 @@ const AddCard = ({ profile, edit }) => {
         if (!edit) {
 
             if (formDataCards.front && formDataCards.back) {
-                await createCard(deckId, formDataCards)
-                setFormDataCards({ front: '', back: '' })
+                if (formDataCards.front.trim() && formDataCards.back.trim()) {
+                    await createCard(deckId, formDataCards)
+                    setFormDataCards({ front: '', back: '' })
 
-                history.push(`/decks/${deckId}`)
+                    history.push(`/decks/${deckId}`)
+                }
             } else {
                 history.push(`/decks/${deckId}`)
             }
 
         } else {
-            await updateCard({
-                ...formDataCards,
-                id: cardId
-            })
-            history.push(`/decks/${deckId}`)
+
+            if (formDataCards.front && formDataCards.back) {
+                if (formDataCards.front.trim() && formDataCards.back.trim()) {
+
+                    await updateCard({
+                        ...formDataCards,
+                        id: cardId
+                    })
+                    history.push(`/decks/${deckId}`)
+                }
+            }
+
+
+
         }
     }
 
 
     const checkToRender = Object.values(formDataCards).every(val => val === '')
-    console.log(checkToRender, deckName)
 
     return (
         <div>
@@ -118,25 +131,8 @@ const AddCard = ({ profile, edit }) => {
 
 
                     <AddCardTitle deckName={deckName} profile={profile} />
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <label htmlFor="exampleFormControlTextarea1" className="form-label">Front</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Front side of the card'
-                                name="front"
-                                value={formDataCards.front}
-                                onChange={handleChange} />
-                        </div>
+                    < AddCardForm handleChange={handleChange} handleDone={handleDone} handleSubmit={handleSubmit} formDataCards={formDataCards} />
 
-                        <div className="mb-3">
-                            <label htmlFor="exampleFormControlTextarea1" className="form-label">Back</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Back side of the card' value={formDataCards.back}
-                                name="back"
-                                onChange={handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
-                        <button style={{ marginLeft: '1rem' }} type="button" className="btn btn-primary" onClick={handleDone}>Done</button>
-
-                    </form>
                 </div> : <Loader />
             }
 
