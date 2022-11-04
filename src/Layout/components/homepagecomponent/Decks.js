@@ -7,7 +7,16 @@ const Decks = ({ availableDecks, handleDeleteDeck }) => {
 
 
 
+    // .button-style {
+    //     display: flex;
+    //     justify-content: space-around;
 
+    // }
+
+    // .card-header {
+    //     display: flex;
+    //     justify-content: space-between;
+    // }
 
     const decks = availableDecks.map(({ name, description, id, cards }) => {
 
@@ -22,7 +31,7 @@ const Decks = ({ availableDecks, handleDeleteDeck }) => {
                 <div className="card-body">
                     <p className="card-text">{description}</p>
                     {/* for the button logo */}
-                    <div className='button-style'>
+                    <div className='button-style' style={{ display: 'flex', justifyContent: "space-around" }}>
                         <Link to={`/decks/${id}`}>
                             <ViewButton />
 
@@ -40,9 +49,9 @@ const Decks = ({ availableDecks, handleDeleteDeck }) => {
 
     return (
 
-        <>
+        <div>
             {availableDecks.length === 0 ? <Loader /> : decks}
-        </>
+        </div>
     )
 
 

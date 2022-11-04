@@ -50,10 +50,6 @@ const DeckSreen = () => {
         const { name, description, cards } = Deck
 
         //this will give me the right card format 
-        const validCardsToStudy = cards.filter(card => {
-            return Object.keys(card).length === 4 && card.front && card.back && (card.deckId || card.deckId === 0) && (card.id || card.id === 0)
-
-        })
 
         // /decks/:deckId/cards/new
         // /decks/:deckId/edit
@@ -62,7 +58,7 @@ const DeckSreen = () => {
                 <DeckScreenTitleAndButtons name={name} description={description} deckId={deckId} handleDeleteDeck={handleDeleteDeck} />
 
                 <div>
-                    {validCardsToStudy.length === 0 ? <h2>No Cards at the moment</h2> : <DeckScreenCards validCardsToStudy={validCardsToStudy}
+                    {cards.length === 0 ? <h2>No Cards at the moment</h2> : <DeckScreenCards validCardsToStudy={cards}
                         handleDeleteCard={handleDeleteCard} />}
                 </div>
             </div>

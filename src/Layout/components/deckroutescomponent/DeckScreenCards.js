@@ -46,9 +46,9 @@ const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
     })
 
 
-    return <>
+    return <div>
         {cards}
-    </>
+    </div>
 
 }
 

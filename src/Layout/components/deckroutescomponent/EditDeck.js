@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { createDeck, readDeck, updateDeck } from '../../../utils/api'
 import { useHistory, Link, useParams, useRouteMatch } from 'react-router-dom'
 import { HomeButton } from "../homepagecomponent/DecksButton"
+import Loader from "../homepagecomponent/Loader"
 
 const EditDeck = () => {
 
@@ -110,7 +111,7 @@ const EditDeck = () => {
 
 
                 </form>
-            </div> : <h1>...Loading</h1>}
+            </div> : <Loader />}
         </div>
     )
 }
