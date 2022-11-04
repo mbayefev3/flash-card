@@ -89,6 +89,8 @@ const AddCard = ({ profile, edit }) => {
 
             if (formDataCards.front && formDataCards.back) {
                 await createCard(deckId, formDataCards)
+                setFormDataCards({ front: '', back: '' })
+
                 history.push(`/decks/${deckId}`)
             }
         } else {

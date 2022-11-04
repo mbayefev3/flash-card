@@ -43,7 +43,7 @@ const Lessons = ({ cards }) => {
                 {validCardsToStudy.length >= 3 ? null : <h2>Not enough cards</h2>}
                 <h3>{`Card ${validCardsToStudy.length > 0 ? next + 1 : 0} of ${validCardsToStudy.length}`}</h3>
 
-                {validCardsToStudy.length >= 3 ? <p className="card-text">{cards[next][flip]}</p> : null
+                {validCardsToStudy.length >= 3 ? <p className="card-text">{validCardsToStudy[next][flip]}</p> : null
                 }
 
                 {validCardsToStudy.length >= 3 ? <FlipButton handleFilpCard={handleFilpCard} handleNextClick={handleNextClick} next={next} flip={flip} /> : <>
