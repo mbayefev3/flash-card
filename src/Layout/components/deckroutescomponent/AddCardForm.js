@@ -1,7 +1,7 @@
 import React from "react";
 
 
-
+// this will be imported to AddCard component
 const AddCardForm = ({ handleChange, handleDone, handleSubmit, formDataCards }) => {
 
     return (<form onSubmit={handleSubmit}>

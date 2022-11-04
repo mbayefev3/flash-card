@@ -1,22 +1,9 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
-import "./Decks.css"
 import Loader from './Loader'
 import { ViewButton, StudyButton, DeleteButton } from './DecksButton'
 const Decks = ({ availableDecks, handleDeleteDeck }) => {
 
-
-
-    // .button-style {
-    //     display: flex;
-    //     justify-content: space-around;
-
-    // }
-
-    // .card-header {
-    //     display: flex;
-    //     justify-content: space-between;
-    // }
 
     const decks = availableDecks.map(({ name, description, id, cards }) => {
 
