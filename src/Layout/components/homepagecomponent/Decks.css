@@ -1,0 +1,10 @@
+.button-style {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}

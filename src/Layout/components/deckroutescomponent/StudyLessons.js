@@ -3,7 +3,6 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import Lessons from './Lessons'
 const StudyLessons = ({ Deck }) => {
     const { url } = useRouteMatch()
-    console.log('fff', Deck)
     return (
         <div className="card">
             <div className="card-header">
