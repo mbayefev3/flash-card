@@ -5,7 +5,7 @@ import DeckScreen from "./DeckScreen";
 import EditDeck from "./EditDeck";
 import AddCard from "./AddCard";
 import CardRoutes from "./CardRoutes";
-const Main = () => {
+const MainRoutes = () => {
     // /decks/:deckId/cards/new
     // /decks/:deckId/cards/:cardId/edit
     return (
@@ -30,4 +30,4 @@ const Main = () => {
 
 
 
-export default Main
+export default MainRoutes

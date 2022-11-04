@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import "./Decks.css"
 import Loader from './Loader'
-import { View, Study, Delete } from './DecksButton'
+import { ViewButton, StudyButton, DeleteButton } from './DecksButton'
 const Decks = ({ availableDecks, handleDeleteDeck }) => {
 
 
@@ -19,22 +19,22 @@ const Decks = ({ availableDecks, handleDeleteDeck }) => {
         return (
             <div className="card" key={id}>
                 <div className="card-header">
-                    <h3> {name}</h3>
-                    <h2>{validCardsToStudy.length} {validCardsToStudy.length === 0 ? 'card' : 'cards'}</h2>
+                    <h5> {name}</h5>
+                    <h5>{validCardsToStudy.length} {validCardsToStudy.length === 0 ? 'card' : 'cards'}</h5>
                 </div>
                 <div className="card-body">
                     <p className="card-text">{description}</p>
                     {/* for the button logo */}
                     <div className='button-style'>
                         <Link to={`/decks/${id}`}>
-                            <View />
+                            <ViewButton />
 
                         </Link>
                         <Link to={`/decks/${id}/study`}>
-                            <Study />
+                            <StudyButton />
 
                         </Link>
-                        <Delete id={id} handleDeleteDeck={handleDeleteDeck} />
+                        <DeleteButton id={id} handleDeleteDeck={handleDeleteDeck} />
                     </div>
                 </div>
             </div >

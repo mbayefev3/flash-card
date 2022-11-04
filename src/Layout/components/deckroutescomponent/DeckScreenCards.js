@@ -3,6 +3,7 @@ import { deleteCard } from '../../../utils/api'
 
 import { Link, useParams } from "react-router-dom";
 
+import { EditButton, DeleteCardButton } from "../homepagecomponent/DecksButton";
 const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
 
     // /decks/:deckId/cards/:cardId/edit
@@ -31,10 +32,10 @@ const DeckScreenCards = ({ validCardsToStudy, handleDeleteCard }) => {
                 </div>
                 <div style={{ TextAlign: "center" }}>
                     <Link to={`/decks/${deckId}/cards/${id}/edit`}>
-                        <button>Edit</button>
-
+                        <EditButton />
                     </Link>
-                    <button onClick={() => handleDeleteCard(id)}>Delete</button>
+                    < DeleteCardButton handleDeleteCard={handleDeleteCard} id={id} />
+
                 </div>
             </div>
 

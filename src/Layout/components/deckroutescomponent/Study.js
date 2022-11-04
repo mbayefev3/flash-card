@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import { readDeck } from '../../../utils/api'
 import StudyLessons from "./StudyLessons"
+import Loader from "../homepagecomponent/Loader"
 const Study = () => {
 
     const [Deck, setDeck] = useState({})
@@ -20,9 +21,9 @@ const Study = () => {
     }, [deckId])
     // console.log('deckId', deckId)
     return (
-        <>
-            {Object.keys(Deck).length === 0 ? <h1>...Loading</h1> : <StudyLessons Deck={Deck} />}
-        </>
+        <div>
+            {Object.keys(Deck).length === 0 ? <Loader /> : <StudyLessons Deck={Deck} />}
+        </div>
     )
 }
 

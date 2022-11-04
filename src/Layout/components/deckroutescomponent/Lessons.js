@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FlipButton from "./FlipButton";
 import { useHistory } from 'react-router-dom'
-
+import ByFlip from "./ByFlip"
 const Lessons = ({ cards }) => {
     const [flip, setflip] = useState('front')
     const [next, setNext] = useState(0)
@@ -12,6 +12,7 @@ const Lessons = ({ cards }) => {
 
     })
 
+    // console.log('valid', validCardsToStudy)
     const handleFilpCard = () => {
 
         if (flip === 'front') {
@@ -37,24 +38,7 @@ const Lessons = ({ cards }) => {
     }
 
     return (
-        <div className="card">
-
-            <div className="card-body">
-                {validCardsToStudy.length >= 3 ? null : <h2>Not enough cards</h2>}
-                <h3>{`Card ${validCardsToStudy.length > 0 ? next + 1 : 0} of ${validCardsToStudy.length}`}</h3>
-
-                {validCardsToStudy.length >= 3 ? <p className="card-text">{validCardsToStudy[next][flip]}</p> : null
-                }
-
-                {validCardsToStudy.length >= 3 ? <FlipButton handleFilpCard={handleFilpCard} handleNextClick={handleNextClick} next={next} flip={flip} /> : <>
-                    {<p>{`You need at least 3 cards to study.There are ${validCardsToStudy.length} cards in the deck`}</p>
-                    }
-                    <button type="button" className="btn btn-info">Add Cards</button>
-
-                </>
-                }
-            </div>
-        </div>
+        <ByFlip handleFilpCard={handleFilpCard} handleNextClick={handleNextClick} next={next} flip={flip} validCardsToStudy={validCardsToStudy} />
     )
 }
 

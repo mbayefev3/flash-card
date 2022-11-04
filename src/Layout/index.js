@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route, Switch } from 'react-router-dom'
 import HomePage from "./components/homepagecomponent/HomePage";
-import Main from "./components/deckroutescomponent/Main";
+import MainRoutes from "./components/deckroutescomponent/MainRoutes";
 import Header from "./Header";
 import CreateDeck from "./components/deckroutescomponent/CreateDeck";
 import NotFound from "./NotFound";
@@ -20,7 +20,7 @@ function Layout() {
             <CreateDeck />
           </Route>
           <Route path='/decks/:deckId'>
-            <Main />
+            <MainRoutes />
           </Route>
 
           <NotFound />

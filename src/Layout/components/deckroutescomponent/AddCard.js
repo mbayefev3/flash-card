@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory, useRouteMatch, Link } from 'react-router-dom'
 import { readDeck, createCard, readCard, updateCard } from '../../../utils/api'
-
-
+import AddCardTitle from './AddCardTitle'
+import { HomeButton } from '../homepagecomponent/DecksButton'
+import Loader from '../homepagecomponent/Loader'
 const AddCard = ({ profile, edit }) => {
 
     // console.log('props', profile)
@@ -92,7 +93,10 @@ const AddCard = ({ profile, edit }) => {
                 setFormDataCards({ front: '', back: '' })
 
                 history.push(`/decks/${deckId}`)
+            } else {
+                history.push(`/decks/${deckId}`)
             }
+
         } else {
             await updateCard({
                 ...formDataCards,
@@ -107,23 +111,13 @@ const AddCard = ({ profile, edit }) => {
     console.log(checkToRender, deckName)
 
     return (
-        <>
+        <div>
             {
                 ((!checkToRender && deckName) || (!edit && deckName)) ? <div>
 
 
-                    <div className="card-header">
 
-                        <div>
-
-                            <Link to="/">
-                                <button>Home</button>
-                            </Link>
-                            <button>{deckName}</button>
-                        </div>
-                        dasda / {profile}
-                    </div>
-
+                    <AddCardTitle deckName={deckName} profile={profile} />
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label">Front</label>
@@ -139,16 +133,19 @@ const AddCard = ({ profile, edit }) => {
                                 name="back"
                                 onChange={handleChange} />
                         </div>
-                        <button type="submit" className="btn btn-light">Save</button>
-                        <button type="button" className="btn btn-light" onClick={handleDone}>Done</button>
+                        <button type="submit" className="btn btn-primary">Save</button>
+                        <button style={{ marginLeft: '1rem' }} type="button" className="btn btn-primary" onClick={handleDone}>Done</button>
 
                     </form>
-                </div> : <h1>...Loading</h1>
+                </div> : <Loader />
             }
 
-        </>
+        </div>
     )
 }
+
+
+
 
 
 export default AddCard
